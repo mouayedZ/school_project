@@ -1,0 +1,131 @@
+<app-banner [titre]="title"></app-banner>
+
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="bg-light rounded">
+            <div class="row g-0">
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                    <div class=" d-flex flex-column justify-content-center p-5">
+                        <h1 class="mb-4">Make Appointment</h1>
+                        <form [formGroup]="addCourseForm">
+                            <div class="row g-3">
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control border-0" formControlName="courseName"
+                                            placeholder="Gurdian Name">
+                                        <label for="gname">course Name</label>
+                                    </div>
+                                </div>
+                                <div *ngIf="addCourseForm.controls['courseName'].invalid && 
+              (addCourseForm.controls['courseName'].touched || addCourseForm.controls['courseName'].dirty)">
+                                    <div *ngIf="addCourseForm.controls['courseName'].errors.required"
+                                        style="color: red;">
+                                        the course name is required
+
+                                    </div>
+                                    <div *ngIf="addCourseForm.controls['courseName'].errors.minlength"
+                                        style="color: red;">
+                                        the course name should be at least 3 carac
+
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control border-0"
+                                            formControlName="durationCourse" placeholder="Gurdian Email">
+                                        <label for="gmail">duration of course</label>
+                                    </div>
+                                </div>
+                                <div
+                                    *ngIf="addCourseForm.controls['durationCourse'].invalid && 
+                  (addCourseForm.controls['durationCourse'].touched || addCourseForm.controls['durationCourse'].dirty)">
+                                    <div *ngIf="addCourseForm.controls['durationCourse'].errors.required"
+                                        style="color: red;">
+                                        duration of course is required
+
+                                    </div>
+                                    <div *ngIf="addCourseForm.controls['durationCourse'].errors.minlength"
+                                        style="color: red;">
+                                        duration of course should be at least 3 carac
+
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control border-0" formControlName="childAge"
+                                            placeholder="Child Age (..-..)">
+                                        <label for="cname">Child Age(..-..)</label>
+                                    </div>
+                                </div>
+                                <div *ngIf="addCourseForm.controls['childAge'].invalid && 
+                  (addCourseForm.controls['childAge'].touched || addCourseForm.controls['childAge'].dirty)">
+                                    <div *ngIf="addCourseForm.controls['childAge'].errors.required" style="color: red;">
+                                        Child Age is required
+
+                                    </div>
+                                    <div *ngIf="addCourseForm.controls['childAge'].errors.minlength"
+                                        style="color: red;">
+                                        Child Age should be at least 3 carac
+
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control border-0" formControlName="courseCpacity"
+                                            placeholder="course capacity">
+                                        <label for="cname">course capacity </label>
+                                    </div>
+                                </div>
+                                <div *ngIf="addCourseForm.controls['courseCpacity'].invalid && 
+                  (addCourseForm.controls['courseCpacity'].touched || addCourseForm.controls['courseCpacity'].dirty)">
+                                    <div *ngIf="addCourseForm.controls['courseCpacity'].errors.required"
+                                        style="color: red;">
+                                        course capacity is required
+
+                                    </div>
+                                    <div *ngIf="addCourseForm.controls['courseCpacity'].errors.minlength"
+                                        style="color: red;">
+                                        course capacity should be at least 3 carac
+
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <textarea class="form-control border-0" formControlName="courseDescription"
+                                            placeholder="Leave a message here" style="height: 100px"></textarea>
+                                        <label for="message">description</label>
+                                    </div>
+                                </div>
+                                <div
+                                    *ngIf="addCourseForm.controls['courseDescription'].invalid && 
+                  (addCourseForm.controls['courseDescription'].touched || addCourseForm.controls['courseDescription'].dirty)">
+                                    <div *ngIf="addCourseForm.controls['courseDescription'].errors.required"
+                                        style="color: red;">
+                                        description is required
+
+                                    </div>
+                                    <div *ngIf="addCourseForm.controls['courseDescription'].errors.minlength"
+                                        style="color: red;">
+                                        description should be at least 10 carac
+
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-primary w-100 py-3" [disabled]="addCourseForm.invalid"
+                                        (click)="addCourse()" type="submit">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s" style="min-height: 400px;">
+                    <div class="position-relative h-100">
+                        <img class="position-absolute w-100 h-100 rounded" src="assets/img/appointment.jpg"
+                            style="object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

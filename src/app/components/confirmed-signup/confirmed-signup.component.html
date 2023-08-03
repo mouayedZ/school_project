@@ -1,0 +1,56 @@
+<app-banner></app-banner>
+<div
+  class="flex flex-col sm:flex-row items-center md:items-start sm:justify-center md:justify-start flex-auto min-w-0"
+>
+  <div
+    class="md:flex md:items-center md:justify-end w-full sm:w-auto md:h-full md:w-1/2 py-8 px-4 sm:p-12 md:p-16 sm:rounded-2xl md:rounded-none sm:shadow md:shadow-none sm:bg-card"
+  >
+    <div class="w-full max-w-80 sm:w-80 mx-auto sm:mx-0">
+      <!-- Logo -->
+      <div class=" mx-auto">
+        <img src="assets/img/jeune-homme-barbu-costume-regardant-camera-tout-tenant-ordinateur-portable-isole.jpg" />
+      </div>
+
+      <!-- Title -->
+      <div class="mt-8 text-4xl font-extrabold tracking-tight leading-tight">
+        {{ 'Activate account'  }}
+      </div>
+      <div class="mt-0.5 font-medium">
+        {{
+          'A confirmation mail with instructions has been sent to your email address. Paste the confirmation code.'
+
+        }}
+      </div>
+
+      <!-- Reset password form -->
+      <form class="mt-8"  #resetPasswordNgForm="ngForm">
+        <div>
+          <mat-label class="ml-1">{{ 'Validation Code'  }}</mat-label>
+          <code-input
+            class="mt-3"
+            #codeInput
+            [isCodeHidden]="false"
+            (codeChanged)="onCodeChanged($event)"
+            [codeLength]="6"
+
+          >
+          </code-input>
+        </div>
+        <!-- Submit button -->
+    
+          <button (click)="login()">
+              send
+          </button>
+          <div style="color: red;"> {{message}}</div>
+        <!-- Form footer -->
+        <div class="mt-8 text-md font-medium text-secondary">
+          <span>{{ 'Return to'  }}</span>
+          <a class="ml-1 text-primary-500 hover:underline" [routerLink]="['/sign-in']"
+            >{{ 'Sign in'  }}
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</div>

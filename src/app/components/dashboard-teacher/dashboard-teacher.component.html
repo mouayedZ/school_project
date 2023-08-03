@@ -1,0 +1,90 @@
+<app-banner [titre]="title"></app-banner>
+<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button"
+      role="tab" aria-controls="pills-home" aria-selected="true">Courses</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button"
+      role="tab" aria-controls="pills-profile" aria-selected="false">Students</button>
+  </li>
+
+</ul>
+<div class="tab-content" id="pills-tabContent">
+  <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
+    <table class="table table-bordered border-primary">
+      <thead>
+        <tr>
+      
+          <th style="background-color: rgb(255, 156, 156); color: black;">Course Name</th>
+          <th style="background-color: rgb(255, 156, 156); color: black;">Duration of course</th>
+          <th style="background-color: rgb(255, 156, 156); color: black;">Description</th>
+          <th style="background-color: rgb(255, 156, 156); color: black;">Action</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let course of coursesTab">
+        
+          <td  class="text-center td"> {{course.courseName}}<strong class="text-white"></strong></td>
+          <td class="text-center td">{{course.durationCourse}}</td>
+          <td class="text-center td">{{course.courseDescription}}</td>
+          <td>
+
+            <button class="btn btn-success" style="margin-right: 20px;"
+              (click)="goToDisplay(course._id)">Display <i class="fa-solid fa-eye fa-fade"></i></button>
+            <button class="btn btn-warning" (click)="goToEdit(course._id)" style="margin-right: 20px;">Edit <i class="fa-solid fa-user-pen fa-beat"></i></button>
+            <button class="btn btn-danger" style="margin-right: 20px;">Delete <i class="fa-solid fa-user-xmark fa-beat"></i></button>
+            <button class="btn btn-primary" (click)="showStudents(course._id)">show students <i class="fa-solid fa-eye fa-fade" ></i></button>
+          </td>
+
+
+
+        </tr>
+
+
+
+
+
+      </tbody>
+
+    </table>
+  </div>
+  <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
+    <table class="table table-bordered border-primary">
+      <thead>
+        <tr>
+         
+          <th style="background-color: rgb(255, 156, 156); color: black;">Student First Name</th>
+          <th style="background-color: rgb(255, 156, 156); color: black;">Student last Name</th>
+          <th style="background-color: rgb(255, 156, 156); color: black;">Student note</th>
+          <th style="background-color: rgb(255, 156, 156); color: black;">Student evaluation</th>
+
+          <th>action</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let note of noteTab">
+          
+          <td class="text-center td">{{student.firstName}}<strong></strong></td>
+          <td class="text-center td">{{student.lastName}}</td>
+          <td class="text-center td">{{student.role}}</td>
+
+          <td>
+            <button class="btn btn-success" style="margin-right: 20px;"
+              (click)="goToDisplayStudent(student._id)">Display <i class="fa-solid fa-eye fa-fade" ></i></button>
+            <button class="btn btn-warning" style="margin-right: 20px;"
+              (click)="goToEditStudent(student._id)">Edit <i class="fa-solid fa-user-pen fa-beat"></i></button>
+            <button class="btn btn-danger" style="margin-right: 20px;"
+              (click)="deleteStudent(student._id)">Delete <i class="fa-solid fa-user-xmark fa-beat"></i></button>
+           
+
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+</div>

@@ -1,0 +1,116 @@
+<app-banner [titre]="title"> </app-banner>
+<div class="bg-light rounded">
+    <div class="row g-0">
+        <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+            <div class="h-100 d-flex flex-column justify-content-center p-5">
+                <p class="mb-4 text-center">SignUp Now</p>
+                <form [formGroup]="signupTestForm">
+                    <div class="row g-3">
+                        <div class="col-sm-6">
+                            <div class="form-floating">
+                                <input type="text" style="background-color: transparent;"  class="form-control border-10" formControlName="firstName" id="name"
+                                    placeholder="Your first Name">
+                                <label for="name">Your First Name</label>
+                            </div>
+                        </div>
+                        <span *ngIf="signupTestForm.controls['firstName'].invalid && 
+                        (signupTestForm.controls['firstName'].touched || signupTestForm.controls['firstName'].dirty)">
+                                      <span *ngIf="signupTestForm.controls['firstName'].errors.required" style="color: red;">
+                                          FN is required
+          
+                                      </span>
+          
+                                      <span *ngIf="signupTestForm.controls['firstName'].errors.minlength" style="color: red;">
+                                          FN should be at least 3 carac
+          
+                                      </span>
+                                  </span>
+                        
+                        <div class="col-sm-6">
+                            <div class="form-floating">
+                                <input type="text" style="background-color: transparent;"  class="form-control border-10" formControlName="lastName"
+                                    placeholder="Your last  Name">
+                                <label for="name">Your last Name</label>
+                            </div>
+                        </div>
+                        <div *ngIf="signupTestForm.controls['lastName'].invalid && 
+                        (signupTestForm.controls['lastName'].touched || signupTestForm.controls['lastName'].dirty)">
+                                      <div *ngIf="signupTestForm.controls['lastName'].errors.required" style="color: red;">
+                                          LN is required
+          
+                                      </div>
+                                      <div *ngIf="signupTestForm.controls['lastName'].errors.minlength" style="color: red;">
+                                          LN should be at least 3 carac
+          
+                                      </div>
+                                  </div>
+                        
+                        <div class="col-sm-6">
+                            <div class="form-floating">
+                                <input type="text" style="background-color: transparent;"  class="form-control border-10" formControlName="tel"
+                                    placeholder="Your phone  number">
+                                <label for="name">Your phone number</label>
+                            </div>
+                        </div>
+                        <div *ngIf="signupTestForm.controls['tel'].invalid && 
+              (signupTestForm.controls['tel'].touched || signupTestForm.controls['tel'].dirty)">
+                            <div *ngIf="signupTestForm.controls['tel'].errors.required" style="color: red;">
+                                phone number is required
+
+                            </div>
+                            <div *ngIf="signupTestForm.controls['tel'].errors.minlength" style="color: red;">
+                                phone number should be at least 8 numbers
+
+                            </div>
+                        </div>
+                       
+                        
+                        
+                       
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <input type="email" style="background-color: transparent;"  class="form-control border-10" formControlName="email"
+                                    placeholder="Your Email">
+                                <label for="email">Your Email</label>
+                            </div>
+                        </div>
+                        <div *ngIf="signupTestForm.controls['email'].invalid && 
+              (signupTestForm.controls['email'].touched || signupTestForm.controls['email'].dirty)">
+                            <div *ngIf="signupTestForm.controls['email'].errors.required" style="color: red;">
+                                email is required
+
+                            </div>
+                            <div *ngIf="signupTestForm.controls['email'].errors.email" style="color: red;">
+                                emailshould be at format exemple@exemple.com
+
+                            </div>
+                        </div>
+                        
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <input type="password" style="background-color: transparent;"  class="form-control border-10" formControlName="pwd"
+                                    placeholder="pwd">
+                                <label for="subject">Your password</label>
+                            </div>
+                        </div>
+                        
+                       
+                       
+
+
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s" style="width: 100px;">
+            <div class="position-relative h-100">
+                <img class=" rounded-pill rounded-circle" style="width: 700px; height: auto;" src="assets/img/cheerful-student-writing-holding-books.jpg" alt="">
+            </div>
+        </div>
+        <div class="col-12">
+            <button class="btn btn-primary w-100 py-3" style="margin-top: 50px;" (click)="signUp()" type="submit">Signup
+                </button>
+        </div>
+        <div style="color: red;"> {{messageError}}</div>
+    </div>
+</div>

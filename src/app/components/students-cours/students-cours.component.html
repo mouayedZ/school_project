@@ -1,0 +1,75 @@
+<table class="table table-bordered border-primary">
+  <thead>
+    <tr>
+   
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>number of tel</th>
+
+      <th>action</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let student of foundedd">
+     
+      <td>{{student.firstName}}<strong class="text-white"></strong></td>
+      <td>{{student.lastName}}</td>
+      <td>{{student.tel}}</td>
+      <td>
+        <form [formGroup]="addNoteForm">
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="form-floating">
+                <input type="number" formControlName="note" class="form-control border-0"
+                  style="background-color: rgb(215, 230, 235);" placeholder="Your note ">
+                <label for="name">note</label>
+              </div>
+            </div>
+            <div *ngIf="addNoteForm.controls['note'].invalid && 
+            (addNoteForm.controls['note'].touched || addNoteForm.controls['note'].dirty)">
+              <div *ngIf="addNoteForm.controls['note'].errors.required" style="color: red;">
+                note is required
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-floating">
+                <input type="text" formControlName="evaluation" class="form-control border-0"
+                  style="background-color: rgb(215, 230, 235);" placeholder="Your evaluation">
+                <label for="name">evaluation</label>
+              </div>
+            </div>
+            <div *ngIf="addNoteForm.controls['evaluation'].invalid && 
+            (addNoteForm.controls['evaluation'].touched || addNoteForm.controls['evaluation'].dirty)">
+              <div *ngIf="addNoteForm.controls['evaluation'].errors.required" style="color: red;">
+                evaluation is required
+
+              </div>
+            </div>
+          </div>
+        </form>
+       
+        <button (click)="addNote(student._id,student.tel,student.firstName,student.lastName)" class="btn btn-warning" style="margin-right: 20px;">add a note</button>
+        <button (click)="update(student._id)" class="btn btn-warning" style="margin-right: 20px;">update note</button>
+      
+      
+      </td>
+
+    
+
+    </tr>
+
+
+   
+
+  </tbody>
+  <div style="color: red;"> {{errorMsg}}</div>
+
+</table>
+
+
+
+
+
+
+

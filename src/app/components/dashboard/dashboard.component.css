@@ -1,0 +1,14 @@
+.okay{
+    color: green;
+    font-size: 100px;
+
+}
+.no{
+    color: #ff0000;
+    font-size: 30px;
+}
+.td{
+    font-size: 20px; 
+    color: rgb(245, 15, 34);
+    margin-top: 20px;
+}

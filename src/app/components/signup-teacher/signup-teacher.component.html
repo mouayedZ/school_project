@@ -1,0 +1,223 @@
+<app-banner [titre]="title"> </app-banner>
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="bg-light rounded">
+            <div class="row g-0">
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s" style="min-height: 400px;">
+                    <div class="position-relative h-100">
+                        <img class="position-absolute w-100 h-100 rounded" src="assets/img/call-to-action.jpg"
+                            style="object-fit: cover;">
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                    <div class="h-100 d-flex flex-column justify-content-center p-5">
+                        <h1 class="mb-4 text-center">Become A Teacher</h1>
+                        
+                        <button class="btn btn-primary py-3 px-5" (click)="onclick()">Register Now
+                           ({{readMore?"readMore":"read less"}} )</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bg-light rounded" *ngIf="visible">
+    <div class="row g-0">
+        <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+            <div class="h-100 d-flex flex-column justify-content-center p-5">
+                <h1 class="display-2  animated slideInDown mb-4 text-center"  style="color: #f85a36; ">Signup</h1>
+                <form [formGroup]="signupTeacherForm">
+                    <div class="row g-3">
+                        <div class="col-sm-6">
+                            <div class="form-floating">
+                                <input type="text" style="background-color: transparent;"  class="form-control border-10" formControlName="firstName" id="name"
+                                    placeholder="Your first Name">
+                                <label for="name">Your First Name</label>
+                            </div>
+                        </div>
+                        <span *ngIf="signupTeacherForm.controls['firstName'].invalid && 
+              (signupTeacherForm.controls['firstName'].touched || signupTeacherForm.controls['firstName'].dirty)">
+                            <span *ngIf="signupTeacherForm.controls['firstName'].errors.required" style="color: red;">
+                                FN is required
+
+                            </span>
+
+                            <span *ngIf="signupTeacherForm.controls['firstName'].errors.minlength" style="color: red;">
+                                FN should be at least 3 carac
+
+                            </span>
+                        </span>
+                        <div class="col-sm-6">
+                            <div class="form-floating">
+                                <input type="text" style="background-color: transparent;"  class="form-control border-10" formControlName="lastName"
+                                    placeholder="Your last  Name">
+                                <label for="name">Your last Name</label>
+                            </div>
+                        </div>
+                        <div *ngIf="signupTeacherForm.controls['lastName'].invalid && 
+              (signupTeacherForm.controls['lastName'].touched || signupTeacherForm.controls['lastName'].dirty)">
+                            <div *ngIf="signupTeacherForm.controls['lastName'].errors.required" style="color: red;">
+                                LN is required
+
+                            </div>
+                            <div *ngIf="signupTeacherForm.controls['lastName'].errors.minlength" style="color: red;">
+                                LN should be at least 3 carac
+
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-floating">
+                                <input type="number" style="background-color: transparent;"  class="form-control border-10" formControlName="tel"
+                                    placeholder="Your phone  number">
+                                <label for="name">Your phone number</label>
+                            </div>
+                        </div>
+                        <div *ngIf="signupTeacherForm.controls['tel'].invalid && 
+              (signupTeacherForm.controls['tel'].touched || signupTeacherForm.controls['tel'].dirty)">
+                            <div *ngIf="signupTeacherForm.controls['tel'].errors.required" style="color: red;">
+                                phone number is required
+
+                            </div>
+                            <div *ngIf="signupTeacherForm.controls['tel'].errors.minlength" style="color: red;">
+                                phone number should be at least 8 numbers
+
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-floating">
+
+                                <select name="" id="" style="background-color: transparent;"  class="form-control border-10" formControlName="speacialty"
+                                style="background-color: transparent;"  class="form-control border-10" placeholder="specialty">
+                                    <option value="">specialty</option>
+                                    <option value="physique">physique</option>
+                                    <option value="math">math</option>
+                                    <option value="science">science </option>
+                                    <option value="danse">danse</option>
+                                </select>
+
+                            </div>
+                        </div>
+                        <div *ngIf="signupTeacherForm.controls['speacialty'].invalid && 
+              (signupTeacherForm.controls['speacialty'].touched || signupTeacherForm.controls['speacialty'].dirty)">
+                            <div *ngIf="signupTeacherForm.controls['speacialty'].errors.required" style="color: red;">
+                                speciality is required
+
+                            </div>
+
+                        </div>
+                        <div class="col-sm-6" >
+                            <div class="form-floating">
+                                <input type="file" class="form-control border-0"
+                                    style=" visibility: hidden; " placeholder="cv" #filePicker
+                                    (change)="onImageSelected($event)">
+                                <label for="name"></label>
+                            </div>
+                        </div>
+                        <div *ngIf="signupTeacherForm.controls['cv'].invalid && 
+              (signupTeacherForm.controls['cv'].touched || signupTeacherForm.controls['cv'].dirty)">
+                            <div *ngIf="signupTeacherForm.controls['cv'].errors.required" style="color: red;">
+                                cv is required
+
+                            </div>
+
+                        </div>
+                        <div class="text-center">
+                            <button class="btn btn-primary mb-5" (click)="filePicker.click()">
+                                Please select your cv
+                            </button>
+
+                        </div>
+                        <div>
+                            <img [src]="imagePreview" alt="" width="200px">
+                        </div>
+
+                        <div style="color: red;"> {{errorMsg}}</div>
+
+
+                        <div class="col-sm-6">
+                            <div class="form-floating">
+                                <input type="texy" style="background-color: transparent;"  class="form-control border-10" formControlName="adresse"
+                                    placeholder="Your adresse">
+                                <label for="name">Your adresse</label>
+                            </div>
+                        </div>
+                        <div *ngIf="signupTeacherForm.controls['adresse'].invalid && 
+              (signupTeacherForm.controls['adresse'].touched || signupTeacherForm.controls['adresse'].dirty)">
+                            <div *ngIf="signupTeacherForm.controls['adresse'].errors.required" style="color: red;">
+                                adresse is required
+
+                            </div>
+
+                        </div>
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <input type="email" style="background-color: transparent;"  class="form-control border-10" formControlName="email"
+                                    placeholder="Your Email">
+                                <label for="email">Your Email</label>
+                            </div>
+                        </div>
+                        <div *ngIf="signupTeacherForm.controls['email'].invalid && 
+              (signupTeacherForm.controls['email'].touched || signupTeacherForm.controls['email'].dirty)">
+                            <div *ngIf="signupTeacherForm.controls['email'].errors.required" style="color: red;">
+                                email is required
+
+                            </div>
+                            <div *ngIf="signupTeacherForm.controls['email'].errors.email" style="color: red;">
+                                emailshould be at format exemple@exemple.com
+
+                            </div>
+                        </div>
+                        <div style="color: red;"> {{errorEmail}}</div>
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <input type="password" style="background-color: transparent;"  class="form-control border-10" formControlName="pwd"
+                                    placeholder="pwd">
+                                <label for="subject">Your password</label>
+                            </div>
+                        </div>
+                        <div *ngIf="signupTeacherForm.controls['pwd'].invalid && 
+              (signupTeacherForm.controls['pwd'].touched || signupTeacherForm.controls['pwd'].dirty)">
+                            <div *ngIf="signupTeacherForm.controls['pwd'].errors.required" style="color: red;">
+                                password is required
+
+                            </div>
+                            <div *ngIf="signupTeacherForm.controls['pwd'].errors.pattern" style="color: red;">
+                                password should be at least one upper case and one lower case and one special carac
+
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <input type="password" style="background-color: transparent;"  class="form-control border-10" formControlName="confirmPwd"
+                                    placeholder="confirm pwd">
+                                <label for="subject">Confirm your password</label>
+                            </div>
+                        </div>
+                        <div *ngIf="signupTeacherForm.controls['confirmPwd'].invalid && 
+              (signupTeacherForm.controls['confirmPwd'].touched || signupTeacherForm.controls['confirmPwd'].dirty)">
+                            <div *ngIf="signupTeacherForm.controls['confirmPwd'].errors.required" style="color: red;">
+                                confirm password is required
+
+                            </div>
+                           
+                        </div>
+
+
+
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s" style="width: 100px;">
+            <div class="position-relative h-100">
+                <img class=" rounded-pill rounded-circle" style="width: 740px; height: auto;" src="assets/img/cheerful-student-writing-holding-books.jpg" alt="">
+            </div>
+        </div>
+        <div class="col-12">
+            <button class="btn btn-primary w-100 py-3" [disabled]="signupTeacherForm.invalid" (click)="signup()"
+                type="submit">Signup
+                </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,59 @@
+<app-banner [titre]="title"></app-banner>
+
+<div class="bg-light rounded  container">
+
+    <div class="row  container">
+        <div class="col-12 wow fadeIn" data-wow-delay="0.1s">
+            <div class="h-100 d-flex flex-column justify-content-center p-5">
+                <h1 class="display-2  animated slideInDown mb-4 text-center" style="color: #f85a36;  ">Login Now</h1>
+                <form [formGroup]="loginForm" style="margin-bottom: 50px; margin-top: 50px;">
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <input type="email" class=" form-control border-10" formControlName="email"
+                                    placeholder="Your Email" style="background-color: transparent;">
+                                <label for="email">Your Email</label>
+                            </div>
+                        </div>
+                        <div *ngIf="loginForm.controls['email'].invalid && 
+              (loginForm.controls['email'].touched || loginForm.controls['email'].dirty)">
+                            <div *ngIf="loginForm.controls['email'].errors.required" style="color: red;">
+                                email is required
+
+                            </div>
+                            <div *ngIf="loginForm.controls['email'].errors.email" style="color: red;">
+                                emailshould be at format exemple@exemple.com
+
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <input type="password" style="background-color: transparent;"
+                                    class=" form-control border-10" formControlName="pwd" placeholder="pwd">
+                                <label for="subject">Your Password</label>
+                            </div>
+                        </div>
+                        <div *ngIf="loginForm.controls['pwd'].invalid && 
+              (loginForm.controls['pwd'].touched || loginForm.controls['pwd'].dirty)">
+                            <div *ngIf="loginForm.controls['pwd'].errors.required" style="color: red;">
+                                pawwsord is required
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div style="color: red;">{{errorMsg}}</div>
+        <div class="col-6 wow fadeIn" data-wow-delay="0.5s">
+
+        </div>
+        <div class="col-12">
+            <button class="btn btn-primary w-50  py-3 text-center " style="margin-left: 25%; "
+                [disabled]="loginForm.invalid" (click)="login()" type="submit">Login</button>
+        </div>
+
+    </div>
+</div>

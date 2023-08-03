@@ -1,0 +1,53 @@
+<app-banner [titre]="title"></app-banner>
+<div class="col-lg-20 wow fadeIn" data-wow-delay="0.1s">
+    <div class="h-100 d-flex flex-column justify-content-center p-5">
+      <h1 class="display-2  animated slideInDown mb-4 text-center" style="color: #f85a36; ">Search Now</h1>
+        <form #searchNote="ngForm" (ngSubmit)="searchByPhoneNumber()" >
+            <div class="row g-3">
+                <div class="col-12">
+                    <div class="form-floating">
+                        <input [(ngModel)]="obj.childNumber" name="speciality" type="text" style="background-color: transparent;"  class="form-control border-10"   id="name"
+                            placeholder="specialty of teacher">
+                        <label for="name">phone of child number</label>
+                    </div>
+                </div>
+                <div style="color: red;">{{errorMsg}}</div>
+                <div class="col-6" style="margin-left: 25%;">
+                    <button class="btn btn-primary w-100 py-3"  type="submit">Search Now
+                        </button>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+<div class="widget-n!ext-match" *ngIf="searchTab.length!=0" >
+    <table class="table custom-table " >
+      <thead>
+        <tr >
+          <th>student first name</th>
+          <th>student last Name</th>
+          <th>student number phone </th>
+          <th>student  note</th>
+          <th>student  evaluation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let note of searchTab">
+          <td>{{note.firstName}}</td>
+          <td><strong >{{note.lastName}}</strong></td>
+          <td>{{note.tel}}</td>
+          <td>{{note.note}}</td>
+          <td>{{note.evaluation}}</td>
+         
+         
+
+          
+        </tr>
+        
+        
+      
+      </tbody>
+    </table>
+   
+  </div>

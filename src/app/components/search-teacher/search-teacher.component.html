@@ -1,0 +1,75 @@
+
+<app-banner [titre]="title"></app-banner>
+<div class="col-lg-20 wow fadeIn" data-wow-delay="0.1s">
+    <div class="h-100 d-flex flex-column justify-content-center p-5">
+      <h1 class="display-2  animated slideInDown mb-4 text-center" style="color: #f85a36; ">Search Now</h1>
+        <form #searchTeacher="ngForm" (ngSubmit)="searchBySpeciality()" >
+            <div class="row g-3">
+                <div class="col-12">
+                    <div class="form-floating">
+                        <input [(ngModel)]="obj.speciality" name="speciality" type="text" style="background-color: transparent;" class="form-control border-10"   id="name"
+                            placeholder="specialty of teacher"  ngModel required>
+                        <label for="name">Teacher Speciality</label>
+                    </div>
+                </div>
+                <div  *ngIf="searchTeacher.controls['speciality'].invalid && searchTeacher.controls['speciality'].touched" style="color: rgb(255, 88, 88);">
+                  Ce champ est obligatoire.
+                </div>
+                <div class="col-6" style="margin-left: 25%;">
+                    <button class="btn btn-primary w-100 py-3"  type="submit">Search Now
+                        </button>
+                        
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+<div class="widget-n!ext-match" *ngIf="searchTab.length!=0" >
+    <table class="table custom-table " >
+      <thead>
+        <tr >
+          <th>Id</th>
+          <th>teacher first Name</th>
+          <th>teacher last name </th>
+          <th>teacher speciality</th>
+          
+          
+
+          
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let teacher of searchTab">
+          <td>{{teacher.id}}</td>
+          <td><strong >{{teacher.firstName}}</strong></td>
+          <td>{{teacher.lastName}}</td>
+          <td>{{teacher.speacialty}}</td>
+         
+         
+
+          
+        </tr>
+        
+        
+      
+      </tbody>
+    </table>
+    <div class="container-xxl py-5">
+      <div class="container">
+        <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+          <h1 class="mb-3">Popular Teachers</h1>
+          <p>Eirmod sed ipsum dolor sit rebum labore magna erat. Tempor ut dolore lorem kasd vero ipsum sit
+            eirmod sit. Ipsum diam justo sed rebum vero dolor duo.</p>
+        </div>
+        <div class="row g-4">
+     <div *ngFor="let teacher of searchTab" class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+   
+       
+        <app-teacher [y]="teacher"></app-teacher>
+      
+      </div>
+    </div>
+      </div>
+    </div>
+  </div>

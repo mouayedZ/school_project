@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0">
+    <a href="index.html" class="navbar-brand">
+      <h1 class="m-0 text-primary"><i class="fa fa-book-reader me-3"></i>Kider</h1>
+    </a>
+    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <div class="navbar-nav mx-auto">
+        
+        <a *ngIf="userConnected"  class="nav-item nav-link active" style="color: black;">welcome {{userConnected[0].fname}} {{userConnected[0].lname}}</a>
+        <a routerLink="" class="nav-item nav-link active">Home</a>
+        <li *ngIf="userConnected">
+        <a  *ngIf="userConnected[0].role=='admin'"  routerLink="/dashboard" class="nav-item nav-link active">dashboard</a>
+        </li>
+        <li *ngIf="userConnected">
+        <a  *ngIf="userConnected[0].role=='teacher'"  routerLink="/dashboardTeacher" class="nav-item nav-link active">dashboard </a>
+      </li>
+      <li *ngIf="userConnected">
+        <a  *ngIf="userConnected[0].role=='student'"  routerLink="/dashboardStudent" class="nav-item nav-link active">dashboard </a>
+        </li>
+        <li *ngIf="userConnected">
+        <a  *ngIf="userConnected[0].role=='parent'"  routerLink="/searchNote" class="nav-item nav-link active">Search Notes  </a>
+        </li>
+        <a routerLink="/courses" class="nav-item nav-link  active">Classes</a>
+        <div *ngIf=" !userConnected" class="nav-item dropdown">
+          <a  class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Signup</a>
+          <div class="dropdown-menu active rounded-0 rounded-bottom border-0 shadow-sm m-0">
+            <a routerLink="/signupTeacher" class="dropdown-item">Are you a Teacher</a>
+            <a routerLink="/signup" class="dropdown-item">Are you a Student</a>
+            <a routerLink="/signupParent" class="dropdown-item">Are you a Parent</a>
+          </div>
+        </div>
+        <a href="contact.html" class="nav-item nav-link active">Contact Us</a>
+        <a    routerLink="/teachers" class="nav-item nav-link active">Teachers</a>
+        <a    routerLink="/courses" class="nav-item nav-link active">courses</a>
+        <a    routerLink="/searchTeacher" class="nav-item nav-link active">Search Teacher </a>
+      </div>
+      <a  *ngIf="conenctedUser" routerLink="" (click)="logout()" class="nav-item nav-link active">Logout</a>
+      <a routerLink="/login"class="btn btn-primary rounded-pill px-3 d-none d-lg-block">Login<i class="fa fa-arrow-right ms-3"></i></a>
+    </div>
+  </nav>

@@ -1,0 +1,43 @@
+
+ 
+ <div class="" >
+    <div class="classes-item">
+      <div class="bg-light rounded-circle w-75 mx-auto p-3">
+        <img class="img-fluid rounded-circle" src="assets/img/classes-4.jpg" alt="">
+      </div>
+      <div class="bg-light rounded p-4 pt-5 mt-n5">
+        <a class="d-block text-center h3 mt-3 mb-4" (click)="display(x._id)">{{x.courseName}}</a>
+        <div class="d-flex align-items-center justify-content-between mb-4">
+          <div class="d-flex align-items-center">
+            <img class="rounded-circle flex-shrink-0" src="assets/img/user.jpg" alt=""
+              style="width: 45px; height: 45px;">
+            <div class="ms-3">
+              <h6 class="text-primary mb-1">{{x.teacherName}}</h6>
+              <small>Teacher</small>
+            </div>
+          </div>
+          <span class="bg-primary text-white rounded-pill py-2 px-3" href="">$99</span>
+        </div>
+        <div class="row g-1">
+          <div class="col-4">
+            <div class="border-top border-3 border-primary pt-2">
+              <h6 class="text-primary mb-1">Age:</h6>
+              <small>{{x.childAge}}</small>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="border-top border-3 border-success pt-2">
+              <h6 class="text-success mb-1">Time:</h6>
+              <small>9-10 AM</small>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="border-top border-3 border-warning pt-2">
+              <h6 class="text-warning mb-1">Capacity:</h6>
+              <small>{{x.courseCpacity}} Kids</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
